@@ -3,10 +3,10 @@ import './App.css';
 import {NavLink, Outlet, Route, Routes, useParams} from "react-router-dom";
 
 function App() {
-    const Mym=()=>{
-        const params=useParams<'id'|'s'>()
-        const some=params
-     console.log(some)
+    const Mym = () => {
+        const params = useParams<'id' | 's'>()
+        const some = params
+        console.log(some)
         return <div>MYM</div>
     }
     return (
@@ -15,8 +15,16 @@ function App() {
             <h2>
                 <NavLink to={'/'}>main</NavLink>---
                 <NavLink to={'/login'}>login</NavLink>---
-                <NavLink to={'/profile'}>profile</NavLink>---
-                <NavLink to={'/profile/settings'}>settings</NavLink>---
+                <NavLink
+                    to={'/profile'}
+                    // style={{color: 'cadetblue'}}
+                    style={(params)=>{
+                        return {color:  params.isActive ? 'red' : 'cadetblue'}
+                    }}
+                >profile</NavLink>---
+                <NavLink to={'/profile/settings'}
+                 className={(params)=>params.isActive ? 'act':'def'}
+                >settings</NavLink>---
                 {/*<NavLink to={'/profile/set'}>set</NavLink>*/}
                 <NavLink to={'/my'}>my</NavLink>---
                 <NavLink to={'/my/set'}>mySet</NavLink>----
@@ -27,14 +35,14 @@ function App() {
                 <Route path={'/'} element={<h1>main</h1>}/>
                 <Route path={'/login'} element={<h1>login</h1>}/>
                 <Route path={'/profile/*'} element={(
-                            <h1>
-                                profile
-                                <Routes>
-                                <Route path={'/settings'} element={<h3>settings</h3>}/>
+                    <h1>
+                        profile
+                        <Routes>
+                            <Route path={'/settings'} element={<h3>settings</h3>}/>
 
-                                </Routes>
-                            </h1>
-                    )}
+                        </Routes>
+                    </h1>
+                )}
                 />
                 <Route path={'/my'} element={(
                     <h4>
@@ -50,6 +58,11 @@ function App() {
                 </Route>
 
             </Routes>
+            <a
+                href={'/'}
+            target={'_blank'}
+                rel={'111'}
+            >xxx</a>
             <div>
                 <hr></hr>
                 lesson 3
