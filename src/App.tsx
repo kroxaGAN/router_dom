@@ -36,6 +36,7 @@ function App() {
                         <Outlet/>
                     </h4>
                 )}>
+                    <Route path={'*'} element={<h3>not page</h3>}/>
                     <Route path={'/my/set'} element={<h3>set</h3>}/>
                     <Route path={'/my/set2'} element={<h3>set2</h3>}/>
                 </Route>
