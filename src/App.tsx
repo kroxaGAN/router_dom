@@ -1,8 +1,14 @@
 import React from 'react';
 import './App.css';
-import {NavLink, Outlet, Route, Routes} from "react-router-dom";
+import {NavLink, Outlet, Route, Routes, useParams} from "react-router-dom";
 
 function App() {
+    const Mym=()=>{
+        const params=useParams<'id'|'s'>()
+        const some=params
+     console.log(some)
+        return <div>MYM</div>
+    }
     return (
         <div className="App">
             <h3>REACT ROUTER DOM V6</h3>
@@ -43,8 +49,21 @@ function App() {
                     <Route path={'/my/set2'} element={<h3>set2</h3>}/>
                 </Route>
 
-
             </Routes>
+            <div>
+                <hr></hr>
+                lesson 3
+                <div>
+                    <NavLink to={'/mym/:id/:s'}>mym</NavLink>
+                </div>
+
+                <Routes>
+                    <Route path={'/mymain'} element={<div>My Main</div>}/>
+                    <Route path={'/mym/:id/:s'} element={<Mym/>}/>
+
+                </Routes>
+
+            </div>
         </div>
     );
 }
